@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Information System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        #search-box {
+            padding: 10px;
+            width: 300px;
+        }
+        #search-button {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .destination-name {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Tourism Information System</h1>
+
+    <label for="search-box">Search for a destination:</label>
+    <input type="text" id="search-box" placeholder="Enter destination...">
+    <button id="search-button">Search</button>
+
+    <div id="results">
+        <p class="destination-name">Goa</p>
+        <p class="destination-name">Kerala</p>
+        <p class="destination-name">Paris</p>
+        <p class="destination-name">Tokyo</p>
+    </div>
+
+    <script>
+        document.getElementById('search-button').addEventListener('click', function() {
+            const searchTerm = document.getElementById('search-box').value.toLowerCase();
+            const destinations = document.querySelectorAll('.destination-name');
+            let found = false;
+
+            destinations.forEach(destination => {
+                if (destination.textContent.toLowerCase().includes(searchTerm)) {
+                    destination.style.display = 'block';
+                    found = true;
+                } else {
+                    destination.style.display = 'none';
+                }
+            });
+
+            if (!found) {
+                alert('No destinations found.');
+            }
+        });
+    </script>
+</body>
+</html>
